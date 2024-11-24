@@ -98,6 +98,47 @@ dfx identity get-principal
    ```
 
 ---
+Here's how you can add security measures to your documentation for the ICP Token Wallet:
+
+---
+
+## Security Measures
+
+Security is a key focus in the development of this token wallet to ensure the integrity of transactions and user data. Below are the key security measures implemented:
+
+### 1. **Owner Control**
+   - The wallet is initialized with a designated owner. Only the owner can mint new tokens.
+   - This ensures that the supply of tokens is controlled and prevents unauthorized users from inflating the total supply.
+
+### 2. **Access Control for Transactions**
+   - For each transaction, the sender's balance is checked before transferring tokens to the recipient.
+   - If the sender does not have enough tokens, the transaction is rejected.
+   - This ensures that users cannot transfer more tokens than they possess, preventing issues such as negative balances.
+
+### 3. **Principal-based Authorization**
+   - Transactions are verified based on the `Principal` of the caller (sender). 
+   - This ensures that only the intended user can interact with their own wallet, adding a layer of identity validation.
+
+### 4. **Immutable Wallet State**
+   - The wallet state is stored securely using the `RefCell` mechanism, making it thread-safe and ensuring that the data is not tampered with during updates.
+   - This ensures that no unauthorized changes can be made to balances, token symbols, or other key properties without proper checks.
+
+### 5. **Secure Token Minting**
+   - The minting function ensures that only the designated owner of the wallet can create new tokens. 
+   - This prevents unauthorized minting, ensuring that the token supply is under control and not subject to malicious manipulation.
+
+### 6. **Data Privacy**
+   - All wallet data, such as balances and token information, is stored in a decentralized manner on the ICP blockchain, ensuring that users' private information remains secure and immutable.
+   
+### 7. **Secure Encryption for Wallet Identity**
+   - Wallet identities are encrypted to prevent unauthorized access and to ensure user data privacy.
+
+### 8. **Smart Contract Safety**
+   - The code leverages the DFINITY SDK's secure development environment, ensuring that no malicious code can be injected into the wallet contract.
+   - Each contract call (such as `transfer`, `mint`, `balance_of`) is carefully implemented to avoid vulnerabilities such as reentrancy attacks, ensuring safe interactions with the blockchain.
+
+---
+
 
 ## Available Methods
 
