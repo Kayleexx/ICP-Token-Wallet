@@ -1,3 +1,14 @@
+type TokenWallet = record {
+    owner: principal;
+    token_symbol: text;
+    token_name: text;
+    decimals: nat8;
+    total_supply: nat64;
+};
+
 service : {
-    "greet": (text) -> (text) query;
+    balance_of: (principal) -> (nat64) query;
+    transfer: (principal, nat64) -> (bool);
+    token_info: () -> (text, text, nat8, nat64) query;
+    mint: (principal, nat64) -> (bool);
 }
