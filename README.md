@@ -98,9 +98,6 @@ dfx identity get-principal
    ```
 
 ---
-Here's how you can add security measures to your documentation for the ICP Token Wallet:
-
----
 
 ## Security Measures
 
